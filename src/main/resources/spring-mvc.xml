@@ -69,7 +69,7 @@
        </bean>
 
        <!-- 获取国际化资源 -->
-       <bean id="messageMethod" class="com.common.aplus.method.MessageMethod"></bean>
+       <bean id="messageMethod" class="com.aplus.method.MessageMethod"></bean>
 
        <!--<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">-->
               <!--<property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>-->

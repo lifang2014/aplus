@@ -1,4 +1,4 @@
-package com.common.aplus.utils;
+package com.aplus.utils;
 
 import java.util.Locale;
 

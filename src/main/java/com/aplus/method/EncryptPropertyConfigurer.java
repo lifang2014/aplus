@@ -1,6 +1,6 @@
-package com.common.aplus.method;
+package com.aplus.method;
 
-import com.common.aplus.utils.DESUtils;
+import com.aplus.utils.DESUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

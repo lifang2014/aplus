@@ -1,12 +1,10 @@
-package com.common.aplus.entity;
+package com.aplus.entity;
 
-import com.alibaba.druid.sql.visitor.functions.Char;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.io.Serializable;
 
 /**
  * <pre>
@@ -16,14 +14,14 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "t_admin")
-public class Admin extends BaseEntity{
+public class AdminEntity extends BaseEntity{
 
     @NotBlank
     private String username;
 
     @NotBlank
     @Column(length = 64, nullable = false)
-    private Char[] password;
+    private char[] password;
 
     public String getUsername() {
         return username;
@@ -33,11 +31,11 @@ public class Admin extends BaseEntity{
         this.username = username;
     }
 
-    public Char[] getPassword() {
+    public char[] getPassword() {
         return password;
     }
 
-    public void setPassword(Char[] password) {
+    public void setPassword(char[] password) {
         this.password = password;
     }
 }

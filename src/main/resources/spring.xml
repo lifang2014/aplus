@@ -14,7 +14,7 @@
        http://www.springframework.org/schema/context/spring-context.xsd">
 
        <!-- 需要解密的文件 -->
-       <bean class="com.common.aplus.method.EncryptPropertyConfigurer">
+       <bean class="com.aplus.method.EncryptPropertyConfigurer">
               <property name="location" value="classpath:jdbc.properties"/>
               <property name="fileEncoding" value="UTF-8"></property>
        </bean>

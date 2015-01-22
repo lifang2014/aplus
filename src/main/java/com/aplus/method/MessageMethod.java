@@ -1,6 +1,6 @@
-package com.common.aplus.method;
+package com.aplus.method;
 
-import com.common.aplus.utils.MessageUtils;
+import com.aplus.utils.MessageUtils;
 import freemarker.template.*;
 import org.apache.commons.lang3.StringUtils;
 

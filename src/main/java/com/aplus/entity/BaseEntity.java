@@ -1,4 +1,4 @@
-package com.common.aplus.entity;
+package com.aplus.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
