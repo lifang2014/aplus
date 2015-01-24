@@ -22,7 +22,7 @@ public class BaseServiceImpl<T, ID extends Serializable> implements BaseDao<T, I
     @Transactional(readOnly = true)
     public T findById(@NotNull ID id) {
         if(id != null){
-            baseDao.findById(id);
+            return baseDao.findById(id);
         }
         return null;
     }
@@ -58,11 +58,13 @@ public class BaseServiceImpl<T, ID extends Serializable> implements BaseDao<T, I
         }
     }
 
-    @Override
     @Transactional
     public void remove(@NotNull ID id) {
         if(id != null){
-            baseDao.remove(id);
+            T t = findById(id);
+            if(t != null) {
+                baseDao.remove(t);
+            }
         }
     }
 }

@@ -70,11 +70,4 @@ public abstract class BaseDaoImpl<T, ID extends Serializable> implements BaseDao
         entityManager.remove(t);
     }
 
-    @Override
-    public void remove(@NotNull ID id) {
-        T t = this.findById(id);
-        if(t != null){
-            entityManager.remove(t);
-        }
-    }
 }

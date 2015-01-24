@@ -23,5 +23,4 @@ public abstract interface BaseDao<T, ID extends Serializable> {
 
     public abstract void remove(@NotNull T t);
 
-    public abstract void remove(@NotNull ID id);
 }

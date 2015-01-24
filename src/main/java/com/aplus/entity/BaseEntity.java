@@ -1,5 +1,7 @@
 package com.aplus.entity;
 
+import com.aplus.listener.EntityListener;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -8,6 +10,7 @@ import java.util.Date;
  * Created by lifang on 2015/1/19.
  */
 @MappedSuperclass
+@EntityListeners(EntityListener.class)
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class BaseEntity implements Serializable{
 

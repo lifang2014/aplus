@@ -7,7 +7,6 @@ import com.aplus.entity.AdminEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 
 /**
  * Created by lifang on 2015/1/22.
@@ -19,7 +18,7 @@ public class AdminServiceImpl extends BaseServiceImpl<AdminEntity, Long> impleme
     private AdminDao adminDao;
 
     @Override
-    @Resource(name = "adminDao")
+    @Autowired
     public void setBaseDao(BaseDao<AdminEntity, Long> baseDao) {
         super.setBaseDao(baseDao);
     }
