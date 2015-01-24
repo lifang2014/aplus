@@ -7,4 +7,6 @@ import com.aplus.entity.AdminEntity;
  */
 public abstract interface AdminDao extends BaseDao<AdminEntity, Long>{
 
+    public AdminEntity findByUsername(String username);
+
 }

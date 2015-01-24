@@ -30,6 +30,17 @@ public class LoginLogEntity extends BaseEntity{
     @Enumerated(EnumType.STRING)
     private LoginModeEnum loginMode;
 
+    @OneToOne
+    @JoinColumn(name = "adminId")
+    private AdminEntity adminEntity;
+
+    public LoginLogEntity(AdminEntity adminEntity,String loginIp, Date loginDate, LoginModeEnum loginMode) {
+        this.adminEntity = adminEntity;
+        this.loginIp = loginIp;
+        this.loginDate = loginDate;
+        this.loginMode = loginMode;
+    }
+
     public String getLoginIp() {
         return loginIp;
     }
@@ -52,5 +63,13 @@ public class LoginLogEntity extends BaseEntity{
 
     public void setLoginMode(LoginModeEnum loginMode) {
         this.loginMode = loginMode;
+    }
+
+    public AdminEntity getAdminEntity() {
+        return adminEntity;
+    }
+
+    public void setAdminEntity(AdminEntity adminEntity) {
+        this.adminEntity = adminEntity;
     }
 }

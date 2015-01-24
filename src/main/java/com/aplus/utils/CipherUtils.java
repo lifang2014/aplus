@@ -9,11 +9,9 @@ import sun.misc.BASE64Encoder;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
-import javax.validation.constraints.NotNull;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.util.StringTokenizer;
 
 /**
  * 密码工具类
@@ -69,7 +67,7 @@ public class CipherUtils {
      * @param targetMD5 输入的密码
      * @return
      */
-    public synchronized static boolean isEqualMd5(@NotBlank char[] sourcesMD5, @NotBlank char[] targetMD5){
+    public synchronized static boolean isMD5Equal(@NotBlank char[] sourcesMD5, @NotBlank char[] targetMD5){
         if(sourcesMD5 == null || targetMD5 == null){
             return false;
         }else if(targetMD5.length != 64){
@@ -154,8 +152,8 @@ public class CipherUtils {
         logger.info("password2: {}", String.valueOf(p2));
         logger.info("password3: {}", String.valueOf(p3));
 
-        logger.info("p1 == p2 : {}", isEqualMd5(p1,p2));
-        logger.info("p2 == p3 : {}", isEqualMd5(p2,p3));
+        logger.info("p1 == p2 : {}", isMD5Equal(p1, p2));
+        logger.info("p2 == p3 : {}", isMD5Equal(p2, p3));
     }
 
 }
