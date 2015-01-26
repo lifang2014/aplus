@@ -32,7 +32,7 @@ public class AdminServiceTest extends BaseTest{
     @Test
     public void testPersist(){
         AdminEntity adminEntity = new AdminEntity();
-        adminEntity.setPassword("admin".toCharArray());
+        adminEntity.setPassword("123456".toCharArray());
         adminEntity.setUsername("admin");
         adminService.persist(adminEntity);
     }
@@ -51,4 +51,11 @@ public class AdminServiceTest extends BaseTest{
         adminService.remove(adminEntity.getId());
     }
 
+    @Test
+    public void testDelete2(){
+        AdminEntity adminEntity = adminService.findByUsername("123456");
+        Assert.assertNotNull(adminEntity);
+        logger.info("adminEntity:{}", adminEntity);
+        adminService.remove(adminEntity.getId());
+    }
 }

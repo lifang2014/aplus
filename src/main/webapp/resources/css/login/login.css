@@ -1,0 +1,31 @@
+body{padding:0; margin:0; background:#454545 url(../../images/login/login_bg.jpg) top center no-repeat; font-size:12px;font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, Arial, sans-serif}
+
+ul{padding:0; margin:0; list-style:none;}
+
+img{border:none;}
+
+form{padding:0; margin:0;}
+
+.main_r{margin:0px auto;margin-top:150px;width:250px;height:282px;padding:20px 22px;background:url(../../images/login/bg_login.png) 0 0 no-repeat;position: relative;}
+
+.main_r img{position: absolute;left: 32px;}
+
+.main_r img.i_com{top:50px;}
+
+.main_r img.i_name{top:115px;}
+
+.main_r img.i_pass{top:180px;}
+
+.main_r .tip_con{width: 250px;height: 32px; margin-top: 5px;}
+
+.main_r img.i_warn{height: 22px; width: 22px; margin: 5px 0 5px 0px;line-height: 32px;}
+
+.main_r .tip_con .tip_txt{margin-left: 38px;line-height: 32px;font-size: 13px;color: red;word-wrap: break-word;}
+
+.input{width:205px;padding:12px 10px 11px 35px;height:20px;line-height:20px;background:url(../../images/login/bg_input.png) 0 0 no-repeat;border:0;margin:20px 0 0 0;font:14px/20px;overflow:hidden;color:#86b9d8;vertical-align:top;}
+
+.btn{width:250px;margin-top:5px;height:42px;line-height:42px;font-size:20px;text-align:center;text-decoration:none;background:url(../../images/login/bg_btn.png) 0 0 no-repeat;border:0;color:#FFF;cursor:pointer;}
+
+.btn:hover{background-position:0 -42px;}
+
+.placeholder {color:#86b9d8; }

@@ -1,5 +1,6 @@
 package com.aplus.entity;
 
+import com.aplus.utils.CipherUtils;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -117,7 +118,11 @@ public class AdminEntity extends BaseEntity{
     }
 
     public void setPassword(char[] password) {
-        this.password = password;
+        if(password.length != 64){
+            this.password = CipherUtils.getTime64MD5(password);
+        }else {
+            this.password = password;
+        }
     }
 
     public String getQq() {

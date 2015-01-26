@@ -25,7 +25,7 @@
        </mvc:annotation-driven>
 
        <context:component-scan base-package="com.aplus" use-default-filters="false">
-              <!--<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
+              <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
        </context:component-scan>
 
        <!-- 视图解析器  -->
@@ -35,7 +35,7 @@
        </bean>
 
        <bean id="freeMarkerConfigurer" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
-              <property name="templateLoaderPaths" value="${template.loader_path}" />
+              <property name="templateLoaderPaths" value="/WEB-INF/views" />
               <property name="freemarkerSettings">
                      <props>
                             <prop key="defaultEncoding">UTF-8</prop>

@@ -1,11 +1,10 @@
 package com.aplus.utils;
 
+import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.hibernate.validator.constraints.NotBlank;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
@@ -86,13 +85,13 @@ public class CipherUtils {
      * @return 加密后的字符串
      */
     public static String getEncryptBase64String(String str){
-        BASE64Encoder base64Encoder = new BASE64Encoder();
+//        BASE64Encoder base64Encoder = new BASE64Encoder();
         try{
             byte[] strBytes = str.getBytes(ENCODING_UTF8);
             Cipher cipher= Cipher.getInstance(GENERATOR_DES);
             cipher.init(Cipher.ENCRYPT_MODE, key);
             byte[] encryptStrBytes = cipher.doFinal(strBytes);
-            return base64Encoder.encode(encryptStrBytes);
+            return Base64.encodeBase64String(encryptStrBytes);
         }catch (Exception e){
             logger.warn("Cryptographic failure");
             throw new RuntimeException(e);
@@ -105,9 +104,9 @@ public class CipherUtils {
      * @return 解密后的字符串
      */
     public static String getDecryptString(String str){
-        BASE64Decoder base64Decoder = new BASE64Decoder();
+//        BASE64Decoder base64Decoder = new BASE64Decoder();
         try{
-            byte[] strBytes = base64Decoder.decodeBuffer(str);
+            byte[] strBytes = Base64.decodeBase64(str);
             Cipher cipher= Cipher.getInstance(GENERATOR_DES);
             cipher.init(Cipher.DECRYPT_MODE, key);
             byte[] decryptStrBytes = cipher.doFinal(strBytes);

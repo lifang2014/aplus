@@ -14,9 +14,14 @@ public class AdminDaoImpl extends BaseDaoImpl<AdminEntity, Long> implements Admi
 
     @Override
     public AdminEntity findByUsername(String username) {
-        PathBuilder<AdminEntity> pb = new PathBuilder<AdminEntity>(AdminEntity.class, "o");
-        JPAQuery query = new JPAQuery(entityManager);
-        AdminEntity adminEntity = query.from(pb).where(pb.getString("username").eq(username)).singleResult(pb);
+        AdminEntity adminEntity = null;
+        try {
+            PathBuilder<AdminEntity> pb = new PathBuilder<AdminEntity>(AdminEntity.class, "o");
+            JPAQuery query = new JPAQuery(entityManager);
+            adminEntity = query.from(pb).where(pb.getString("username").eq(username)).singleResult(pb);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return adminEntity;
     }
 }

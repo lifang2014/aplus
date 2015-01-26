@@ -13,6 +13,7 @@ import org.apache.shiro.realm.AuthenticatingRealm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.util.Date;
 
@@ -29,7 +30,11 @@ public class AuthenticationRealm extends AuthenticatingRealm {
     @Autowired
     private LoginLogService loginLogService;
 
-    private static final Integer LOCKED_COUNT = 6;
+    @Value("system.login.locked.count")
+    private String lockedCount;
+
+    @Value("system.login.locked.seconds")
+    private String lockedSeconds;
 
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
@@ -43,7 +48,12 @@ public class AuthenticationRealm extends AuthenticatingRealm {
         AdminEntity adminEntity = adminService.findByUsername(username);
         if(adminEntity != null){
             if(adminEntity.getIsLocked()){
-                throw new LockedAccountException();
+                Date nowDate = new Date();
+                if(nowDate.getTime() - adminEntity.getLockedDate().getTime() > getMillisecond()){
+                    adminEntity.setIsLocked(false);
+                }else {
+                    throw new LockedAccountException();
+                }
             }
             if(CipherUtils.isMD5Equal(adminEntity.getPassword(), password)){
                 //登录成功,登录次数加1,失败次数归零,并记录登录日志
@@ -61,8 +71,9 @@ public class AuthenticationRealm extends AuthenticatingRealm {
                 //登录失败,登录失败次数加1
                 logger.info("登录失败");
                 int failedCount = adminEntity.getFailedCount() + 1;
-                if(failedCount >= LOCKED_COUNT){
+                if(failedCount >= Integer.valueOf(lockedCount)){
                     adminEntity.setIsLocked(true);
+                    adminEntity.setLockedDate(new Date());
                 }
                 adminEntity.setFailedCount(failedCount);
                 adminService.merge(adminEntity);
@@ -72,5 +83,13 @@ public class AuthenticationRealm extends AuthenticatingRealm {
         throw new UnknownAccountException();
     }
 
+
+    private long getMillisecond(){
+        if(StringUtils.isBlank(lockedSeconds)){
+            return 30 * 1000 * 60;
+        }
+        Integer second = Integer.valueOf(lockedSeconds);
+        return second * 1000 * 60;
+    }
 
 }

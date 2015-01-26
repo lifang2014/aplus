@@ -270,7 +270,7 @@
           </systemProperties>
           <useTestClasspath>true</useTestClasspath>
           <webAppConfig>
-            <contextPath>/oa</contextPath>
+            <contextPath>/aplus</contextPath>
             <defaultsDescriptor>src/test/resources/webdefault.xml</defaultsDescriptor>
           </webAppConfig>
         </configuration>
