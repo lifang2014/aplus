@@ -2,15 +2,20 @@ package com.aplus.services.impl;
 
 import com.aplus.dao.BaseDao;
 import com.aplus.exception.ServiceException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by lifang on 2015/1/22.
  */
 public class BaseServiceImpl<T, ID extends Serializable> implements BaseDao<T, ID> {
+
+    public Logger logger = LoggerFactory.getLogger(BaseServiceImpl.class);
 
     private BaseDao<T, ID> baseDao;
 
@@ -29,8 +34,19 @@ public class BaseServiceImpl<T, ID extends Serializable> implements BaseDao<T, I
 
     @Override
     @Transactional(readOnly = true)
-    public T findByName(String name) throws ServiceException {
-        return baseDao.findByName(name);
+    public T findByName(String name){
+        try {
+            return baseDao.findByName(name);
+        }catch (Exception e){
+            logger.warn(e.getMessage());
+        }
+        return null;
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<T> findAll() {
+        return baseDao.findAll();
     }
 
     @Override

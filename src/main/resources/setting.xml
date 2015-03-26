@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+
+    <!--是否开启初始化-->
+    <setting name="boolInit" enabled="true"/>
+
+    <!-- XML文件中分割符 -->
+    <setting name="split" enabled="true" value=","></setting>
+
+    <!-- 系统内置公司(对应内置管理员) -->
+    <setting name="company" enabled="true">
+        <map key="CP1000" value="起航软件, 起航软件有限公司, default.jpg"></map>
+    </setting>
+
+    <!-- 系统内置用户  -->
+    <setting name="admin" enabled="true">
+        <map key="admin" value="123456,CP1000"></map>
+        <map key="jerry" value="123456,CP1000"></map>
+    </setting>
+
+    <setting name="menu" enabled="true">
+        <map key="系统管理" value="菜单管理, /admin/menu/build.html"></map>
+        <map key="系统管理" value="系统设置, /admin/system/build.html"></map>
+        <map key="系统管理" value="角色管理, /admin/role/build.html"></map>
+        <map key="系统管理" value="日志管理, /admin/log/build.html"></map>
+        <map key="系统管理" value="安全设置, /admin/safe/build.html"></map>
+        <map key="决策管理" value="发起投票, /admin/policy/build.html"></map>
+        <map key="人事信息" value="信息中心, /admin/hr/build.html"></map>
+        <map key="人事信息" value="岗位信息, /admin/hr/position/build.html"></map>
+        <map key="人事信息" value="职务信息, /admin/hr/job/build.html"></map>
+        <map key="人事信息" value="人事活动, /admin/hr/action.html"></map>
+    </setting>
+
+    <setting name="employeeType" enabled="true">
+        <map key="试用期" value="1"></map>
+        <map key="在职" value="2"></map>
+        <map key="离职" value="3"></map>
+        <map key="休假" value="4"></map>
+        <map key="停职" value="5"></map>
+        <map key="退休" value="6"></map>
+        <map key="自离" value="7"></map>
+    </setting>
+
+    <setting name="subfix" enabled="true" value=".html"></setting>
+
+    <setting name="initSecurity" enabled="true" value="123456"></setting>
+
+</config>

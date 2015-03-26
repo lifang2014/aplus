@@ -13,6 +13,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -28,12 +29,13 @@ public abstract class BaseDaoImpl<T, ID extends Serializable> implements BaseDao
     public Map<String, Boolean> fieldNames = new HashMap<String, Boolean>();
 
     private static final String FIELD_NAME = "name";
+    private static final String FIELD_ISENABLED = "isEnabled";
 
     public BaseDaoImpl() {
         Type type = getClass().getGenericSuperclass();
         Type[] arrayType = ((ParameterizedType)type).getActualTypeArguments();
         clazz = (Class)arrayType[0];
-        Field[] fields = clazz.getFields();
+        Field[] fields = clazz.getDeclaredFields();
         for(Field field : fields){
             fieldNames.put(field.getName(), true);
         }
@@ -50,6 +52,16 @@ public abstract class BaseDaoImpl<T, ID extends Serializable> implements BaseDao
         JPAQuery jpaQuery = new JPAQuery(entityManager);
         if(fieldNames.get(FIELD_NAME) == true){
             return jpaQuery.from(pathBuilder).where(pathBuilder.getString(FIELD_NAME).eq(name)).singleResult(pathBuilder);
+        }
+        return null;
+    }
+
+    @Override
+    public List<T> findAll() {
+        PathBuilder<T> pathBuilder = new PathBuilder<T>(clazz, "o");
+        JPAQuery jpaQuery = new JPAQuery(entityManager);
+        if(fieldNames.get(FIELD_ISENABLED) == true){
+            return jpaQuery.from(pathBuilder).where(pathBuilder.getBoolean(FIELD_ISENABLED).eq(true)).list(pathBuilder);
         }
         return null;
     }

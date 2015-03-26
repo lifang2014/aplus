@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <title>后台管理系统</title>
-    <link rel="stylesheet" type="text/css" href="${path }/resources/back/css/admin-all.css" />
-    <link rel="stylesheet" type="text/css" href="${path }/resources/back/css/base.css" />
-    <link rel="stylesheet" type="text/css" href="${path }/resources/back/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="${path }/resources/back/css/jquery-ui-1.8.22.custom.css" />
-    <script type="text/javascript" src="${path }/resources/back/js/jquery-1.7.2.js"></script>
-    <script type="text/javascript" src="${path }/resources/back/js/jquery-ui-1.8.22.custom.min.js"></script>
-    <script type="text/javascript" src="${path }/resources/back/js/index.js"></script>
+    <meta http-equiv="CONTENT-TYPE" content="text/html;" charset="UTF-8" />
+    <title>${msg("admin.common.main")}</title>
+    <link rel="stylesheet" type="text/css" href="${path }/resources/css/main/main-all.css"/>
+    <link rel="stylesheet" type="text/css" href="${path }/resources/css/main/main-base.css"/>
+    <link rel="stylesheet" type="text/css" href="${path }/resources/css/main/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="${path }/resources/css/main/jquery-ui-1.8.22.custom.css" />
+    <script type="text/javascript" src="${path }/resources/js/jquery-1.7.2.js"></script>
+    <script type="text/javascript" src="${path }/resources/js/main/jquery-ui-1.8.22.custom.min.js"></script>
+    <script type="text/javascript" src="${path }/resources/js/main/main-index.js"></script>
 </head>
 <body>
 <div class="warp">
@@ -70,21 +70,21 @@
     <!--左边菜单开始-->
     <div class="left_c left">
 
-        <h1>系统操作菜单</h1>
+        <h1>${msg("main.menu.list")}</h1>
 
 
         <div class="acc">
 
-        <#list menus as menu>
-            <div>
-                <a class="one">${menu.name}</a>
-                <#list menu.subMenus as sm>
-                    <ul class="kid">
-                        <li><b class="tip"></b><a target="Conframe" href="${base }${sm.path }">${sm.name }</a></li>
-                    </ul>
-                </#list>
-            </div>
-        </#list>
+            <#list menus as menu>
+                <div>
+                    <a class="one">${menu.name}</a>
+                    <#list menu.subMenus as sm>
+                        <ul class="kid">
+                            <li><b class="tip"></b><a target="Conframe" href="${path }${sm.path }">${sm.name }</a></li>
+                        </ul>
+                    </#list>
+                </div>
+            </#list>
 
             <div id="datepicker"></div>
         </div>

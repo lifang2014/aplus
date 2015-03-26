@@ -9,7 +9,7 @@
 	
 	<!--<cache name="menuCache" eternal="false" maxElementsInMemory="200" overflowToDisk="false" timeToIdleSeconds="0" timeToLiveSeconds="3000"></cache>-->
 	
-	<!--<cache name="setting" maxElementsInMemory="100" eternal="true" overflowToDisk="true" />-->
+	<cache name="setting" maxElementsInMemory="100" eternal="true" overflowToDisk="true" />
 	<!-- 
 	        配置自定义缓存
 	  maxElementsInMemory：缓存中允许创建的最大对象数

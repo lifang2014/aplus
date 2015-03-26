@@ -4,7 +4,7 @@ package com.aplus.exception;
 /**
  * Created by lifang on 2015/1/22.
  */
-public class ServiceException extends Exception{
+public class ServiceException extends RuntimeException {
 
     public ServiceException() {
         super();

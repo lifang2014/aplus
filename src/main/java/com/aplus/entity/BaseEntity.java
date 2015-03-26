@@ -22,6 +22,8 @@ public class BaseEntity implements Serializable{
     private Long id;
     private Date createDate;//创建时间
     private Date modifyDate;//更新时间
+    @Column(length = 32)
+    private Long companyId;//所属公司ID
 
     public Long getId() {
         return id;
@@ -45,5 +47,13 @@ public class BaseEntity implements Serializable{
 
     public void setModifyDate(Date modifyDate) {
         this.modifyDate = modifyDate;
+    }
+
+    public Long getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(Long companyId) {
+        this.companyId = companyId;
     }
 }

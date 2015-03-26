@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
  */
 public class BaseTest extends AbstractJUnit4SpringContextTests{
 
-    private Logger logger = LoggerFactory.getLogger(BaseTest.class);
+    public Logger logger = LoggerFactory.getLogger(BaseTest.class);
 
     private Long startTime = null;
 

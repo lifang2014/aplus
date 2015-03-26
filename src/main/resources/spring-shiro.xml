@@ -10,7 +10,7 @@
         <property name="successUrl" value="/admin/common/main.html"></property>
         <property name="filterChainDefinitions">
             <value>
-                /admin/**=authc
+                <!--/admin/**=authc-->
                 /admin/login.jsp=authc
             </value>
         </property>
