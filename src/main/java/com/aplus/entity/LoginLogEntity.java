@@ -9,7 +9,7 @@ import java.util.Date;
  * Created by lifang on 2015/1/23.
  */
 @Entity
-@Table(name = "t_login_log")
+@Table(name = "t_sys_login_log")
 public class LoginLogEntity extends BaseEntity{
 
     /**

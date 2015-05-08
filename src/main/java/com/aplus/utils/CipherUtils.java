@@ -1,7 +1,7 @@
 package com.aplus.utils;
 
 import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.shiro.crypto.hash.Md5Hash;
 import org.hibernate.validator.constraints.NotBlank;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +23,7 @@ public class CipherUtils {
     //指定DES加密解密所用密钥
     private static Key key;
 
-    private static String STR_KEY = "APLUS OFFICE SYSTEM";
+    private static String STR_SALT = "APLUS OFFICE SYSTEM";
 
     private static final String GENERATOR_DES = "DES";
 
@@ -34,7 +34,7 @@ public class CipherUtils {
     static {
         try {
             KeyGenerator generator = KeyGenerator.getInstance(GENERATOR_DES);
-            generator.init(new SecureRandom(STR_KEY.getBytes()));
+            generator.init(new SecureRandom(STR_SALT.getBytes()));
             key = generator.generateKey();
             generator = null;
         }catch (NoSuchAlgorithmException e){
@@ -49,16 +49,12 @@ public class CipherUtils {
      * @param plaintext
      * @return
      */
-    public synchronized static char[] getTime64MD5(@NotBlank char[] plaintext){
-        char[] password = new char[32];
-        char[] timestamp = new char[32];
-        for(int i = 0; i < CIPHER_COUNT; i++){
-            password = DigestUtils.md5Hex(String.valueOf(plaintext)).toCharArray();
-            timestamp = DigestUtils.md5Hex(String.valueOf(System.currentTimeMillis())).toCharArray();
-        }
-        char[] md5Char = new StringBuffer(String.valueOf(timestamp)).append(String.valueOf(password)).toString().toCharArray();
-        return md5Char;
+    public static String getTime64MD5(@NotBlank String plaintext){
+        String password = new Md5Hash(plaintext, STR_SALT, CIPHER_COUNT).toString();
+        String timestamp = new Md5Hash(String.valueOf(System.currentTimeMillis())).toString();
+        return new StringBuffer(timestamp).append(password).toString();
     }
+
 
     /**
      * 比较两个MD5是否相等(只需要比较后32未)
@@ -66,10 +62,10 @@ public class CipherUtils {
      * @param targetMD5 输入的密码
      * @return
      */
-    public synchronized static boolean isMD5Equal(@NotBlank char[] sourcesMD5, @NotBlank char[] targetMD5){
+    public synchronized static boolean isMD5Equal(@NotBlank String sourcesMD5, @NotBlank String targetMD5){
         if(sourcesMD5 == null || targetMD5 == null){
             return false;
-        }else if(targetMD5.length != 64){
+        }else if(targetMD5.length() != 64){
             return false;
         }
         String password = String.valueOf(targetMD5).substring(33);
@@ -124,14 +120,14 @@ public class CipherUtils {
     public static void main(String[] args){
 
         //DES加密
-        String[] decryptStr = {"root","admin","jdbc:mysql://127.0.0.1/db_office?useUnicode=true&characterEncoding=utf-8"};
+        String[] decryptStr = {"root","123456","jdbc:mysql://127.0.0.1/db_office?useUnicode=true&characterEncoding=utf-8"};
         String[] encryptStr = new String[3];
         for(int i = 0; i < decryptStr.length; i++){
             encryptStr[i] = getEncryptBase64String(decryptStr[i]);
             logger.info("{} : {}",decryptStr[i],getEncryptBase64String(decryptStr[i]));
         }
         for(int i = 0; i < encryptStr.length; i++){
-            logger.info("{} : {}",encryptStr[i],getDecryptString(encryptStr[i]));
+            logger.info("{} : {}",getDecryptString(encryptStr[i]), encryptStr[i]);
         }
         logger.info("time millis : {}",System.currentTimeMillis());
 
@@ -139,14 +135,14 @@ public class CipherUtils {
         String strPassword = "admin";
         String strPassword2 = "123456";
         String strPassword3 = "123456";
-        char[] p1 = getTime64MD5(strPassword.toCharArray());
-        char[] p2 = getTime64MD5(strPassword2.toCharArray());
+        String p1 = getTime64MD5(strPassword);
+        String p2 = getTime64MD5(strPassword2);
         try {
             Thread.sleep(100);
         }catch (Exception e){
             //ignore
         }
-        char[] p3 = getTime64MD5(strPassword3.toCharArray());
+        String p3 = getTime64MD5(strPassword3);
         logger.info("password1: {}", String.valueOf(p1));
         logger.info("password2: {}", String.valueOf(p2));
         logger.info("password3: {}", String.valueOf(p3));

@@ -129,8 +129,10 @@ public final class SettingUtils {
                     List<Element> childElements = element.selectNodes(CommonAttributes.M_SETTING_XML_CHLID_ELEMENT_MAP);
                     String name = element.attributeValue(CommonAttributes.M_SETTING_XML_NODE_NAME);
                     String enabled = element.attributeValue(CommonAttributes.M_SETTING_XML_NODE_ENABLED);
+                    String rootValue = element.attributeValue(CommonAttributes.M_SETTING_XML_NODE_VALUE);
                     config.setName(name);
                     config.setEnabled(Boolean.valueOf(enabled));
+                    config.setValue(rootValue);
                     if (childElements.isEmpty()) {//不存在子节点
                         String value = element.attributeValue(CommonAttributes.M_SETTING_XML_NODE_VALUE);
                         config.setValue(value);

@@ -26,4 +26,6 @@ public abstract interface BaseDao<T, ID extends Serializable> {
 
     public abstract void remove(@NotNull T t);
 
+    public abstract List<T> findAllByName(String name);
+
 }

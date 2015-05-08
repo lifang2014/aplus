@@ -13,7 +13,7 @@ import java.util.Date;
  * Created by lifang on 2015/1/23.
  */
 @Entity
-@Table(name = "t_member")
+@Table(name = "t_hr_member")
 public class MemberEntity extends BaseEntity{
 
     /**

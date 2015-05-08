@@ -14,6 +14,7 @@ public class EncryptPropertyConfigurer extends PropertyPlaceholderConfigurer{
 
     private Logger logger = LoggerFactory.getLogger(EncryptPropertyConfigurer.class);
 
+    //需要解密的属性
     private String[] encryptPropNames = {"jdbc.username","jdbc.password"};
 
     /**

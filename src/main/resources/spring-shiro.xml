@@ -12,6 +12,7 @@
             <value>
                 <!--/admin/**=authc-->
                 /admin/login.jsp=authc
+                /admin/logout.jsp = logout
             </value>
         </property>
         <property name="filters">
@@ -30,5 +31,14 @@
 
     <!-- 自定义Realm,权限验证 -->
     <bean id="authenticationRealm" class="com.aplus.filter.AuthenticationRealm"/>
+
+
+
+    <bean id="passwordRetryCache" class="com.aplus.filter.RetryLimitHashedCredentialsMatcher">
+        <constructor-arg ref="cacheManager"/>
+        <property name="hashAlgorithmName" value="md5"/>
+        <property name="hashIterations" value="2"/>
+        <property name="storedCredentialsHexEncoded" value="true"/>
+    </bean>
 
 </beans>

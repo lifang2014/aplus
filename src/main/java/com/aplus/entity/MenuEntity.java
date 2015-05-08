@@ -9,7 +9,7 @@ import java.util.Set;
  * Created by lifang on 2015/1/31.
  */
 @Entity
-@Table(name = "t_menu")
+@Table(name = "t_sys_menu")
 public class MenuEntity extends BaseEntity{
 
     /**

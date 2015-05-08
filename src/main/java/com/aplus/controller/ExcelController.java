@@ -3,8 +3,6 @@ package com.aplus.controller;
 import com.aplus.services.ExcelService;
 import org.apache.commons.beanutils.locale.LocaleBeanUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,9 +16,7 @@ import java.util.ResourceBundle;
  * Created by lifang on 2015/2/22.
  */
 @Controller
-public class ExcelController {
-
-    private Logger logger = LoggerFactory.getLogger(ExcelController.class);
+public class ExcelController extends BaseController{
 
     @Autowired
     private ExcelService excelService;

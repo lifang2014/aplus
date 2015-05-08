@@ -9,7 +9,7 @@ import javax.persistence.Transient;
  * Created by lifang on 2015/1/31.
  */
 @Entity
-@Table(name = "t_company")
+@Table(name = "t_hr_company")
 public class CompanyEntity extends BaseEntity{
 
     /**

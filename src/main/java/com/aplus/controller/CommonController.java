@@ -18,7 +18,7 @@ import java.util.List;
  * Created by lifang on 2015/1/25.
  */
 @Controller
-public class CommonController {
+public class CommonController extends BaseController{
 
 
     @Autowired

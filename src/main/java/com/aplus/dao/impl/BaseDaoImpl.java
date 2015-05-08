@@ -13,6 +13,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -63,7 +64,17 @@ public abstract class BaseDaoImpl<T, ID extends Serializable> implements BaseDao
         if(fieldNames.get(FIELD_ISENABLED) == true){
             return jpaQuery.from(pathBuilder).where(pathBuilder.getBoolean(FIELD_ISENABLED).eq(true)).list(pathBuilder);
         }
-        return null;
+        return new LinkedList<T>();
+    }
+
+    @Override
+    public List<T> findAllByName(String name) {
+        PathBuilder<T> pathBuilder = new PathBuilder<T>(clazz, "o");
+        JPAQuery jpaQuery = new JPAQuery(entityManager);
+        if(fieldNames.get(FIELD_ISENABLED) == true){
+            return jpaQuery.from(pathBuilder).where(pathBuilder.getString(FIELD_NAME).eq(name)).list(pathBuilder);
+        }
+        return new LinkedList<T>();
     }
 
     @Override

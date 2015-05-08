@@ -8,7 +8,7 @@ import javax.persistence.Table;
  * Created by lifang on 2015/1/31.
  */
 @Entity
-@Table(name = "t_member_type")
+@Table(name = "t_hr_member_type")
 public class MemberTypeEntity extends BaseEntity{
 
     /**

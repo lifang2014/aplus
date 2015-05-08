@@ -7,7 +7,7 @@ import javax.persistence.Table;
  * Created by lifang on 2015/2/6.
  */
 @Entity
-@Table(name = "t_department")
+@Table(name = "t_hr_department")
 public class DepartmentEntity extends BaseEntity{
 
 

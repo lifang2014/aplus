@@ -6,6 +6,8 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -21,6 +23,8 @@ import java.util.Map;
  */
 public class AuthenticationFilter extends FormAuthenticationFilter{
 
+    private Logger logger = LoggerFactory.getLogger(AuthenticationFilter.class);
+
     /**
      * 创建身份验证Token
      * @param request
@@ -30,7 +34,7 @@ public class AuthenticationFilter extends FormAuthenticationFilter{
     @Override
     protected AuthenticationToken createToken(ServletRequest request, ServletResponse response) {
         String username = getUsername(request);
-        String password = getPassword(request);
+        String password = CipherUtils.getTime64MD5(getPassword(request));
         String host = getHost(request);
         boolean rememberMe = true;
         return new UsernamePasswordToken(username, password, rememberMe, host);
@@ -65,8 +69,4 @@ public class AuthenticationFilter extends FormAuthenticationFilter{
         return super.onLoginSuccess(token, subject, request, response);
     }
 
-    @Override
-    protected String getPassword(ServletRequest request) {
-        return String.valueOf(CipherUtils.getTime64MD5(super.getPassword(request).toCharArray()));
-    }
 }

@@ -35,8 +35,9 @@
 		loginStatus = "未知的用户名和密码!";
 	}else if("org.apache.shiro.authc.LockedAccountException".equals(loginFailure)){
 		loginStatus = "登录失败超过6次,请稍后再试!";
+	}else{
+		loginStatus = "登录失败,请核对用户名/密码!";
 	}
-	System.out.println(loginFailure);
 %>
 
 <body onselectstart="return false" style="-moz-user-select:none;">
@@ -62,6 +63,10 @@
 			<input type="submit" value="登录" class="btn" />
 		</form>
 	</div>
+
+	<%
+		loginStatus = null;
+	%>
 
 <script type="text/javascript">
 

@@ -13,7 +13,7 @@ import java.util.Set;
  * Created by lifang on 2015/1/24.
  */
 @Entity
-@Table(name = "t_role")
+@Table(name = "t_auth_role")
 public class RoleEntity extends BaseEntity{
 
     /**
@@ -25,7 +25,7 @@ public class RoleEntity extends BaseEntity{
     /**
      * 是否系统内置角色
      */
-    private Boolean isSystem;
+    private boolean isSystem;
 
     /**
      * 角色描述
@@ -37,7 +37,7 @@ public class RoleEntity extends BaseEntity{
      * 角色对应的权限
      * @ElementCollection 组件集合映射, 表示权限不能脱离角色而存在.
      */
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "t_role_authority")
     private List<String> authorities = new LinkedList<String>();
 

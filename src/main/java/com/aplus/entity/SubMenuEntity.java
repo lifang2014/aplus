@@ -7,7 +7,7 @@ import javax.persistence.*;
  * Created by lifang on 2015/1/31.
  */
 @Entity
-@Table(name = "t_sub_menu")
+@Table(name = "t_sys_sub_menu")
 public class SubMenuEntity extends BaseEntity{
 
     /**

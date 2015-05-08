@@ -16,7 +16,10 @@
     <!-- 系统内置用户  -->
     <setting name="admin" enabled="true">
         <map key="admin" value="123456,CP1000"></map>
-        <map key="jerry" value="123456,CP1000"></map>
+    </setting>
+
+    <setting name="role" enabled="true">
+        <map key="超级管理员" value="admin, 1, 超级管理员"></map>
     </setting>
 
     <setting name="menu" enabled="true">
@@ -30,6 +33,8 @@
         <map key="人事信息" value="岗位信息, /admin/hr/position/build.html"></map>
         <map key="人事信息" value="职务信息, /admin/hr/job/build.html"></map>
         <map key="人事信息" value="人事活动, /admin/hr/action.html"></map>
+        <map key="权限管理" value="角色管理, /admin/auth/role.html"></map>
+        <map key="权限管理" value="功能权限, /admin/auth/resources.html"></map>
     </setting>
 
     <setting name="employeeType" enabled="true">
@@ -45,5 +50,23 @@
     <setting name="subfix" enabled="true" value=".html"></setting>
 
     <setting name="initSecurity" enabled="true" value="123456"></setting>
+
+    <setting name="permissionSource" enabled="true">
+        <map key="登录权限" value="system:login:login"></map>
+
+        <map key="菜单权限" value="system:menu:view"></map>
+        <map key="菜单权限" value="system:menu:create"></map>
+        <map key="菜单权限" value="system:menu:delete"></map>
+        <map key="菜单权限" value="system:menu:update"></map>
+    </setting>
+
+    <setting name="role" enabled="true" value="超级管理员">
+        <map key="登录权限" value="system:login:login"></map>
+
+        <map key="菜单权限" value="system:menu:view"></map>
+        <map key="菜单权限" value="system:menu:create"></map>
+        <map key="菜单权限" value="system:menu:delete"></map>
+        <map key="菜单权限" value="system:menu:update"></map>
+    </setting>
 
 </config>

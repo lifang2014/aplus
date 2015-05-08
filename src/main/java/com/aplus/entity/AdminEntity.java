@@ -18,7 +18,7 @@ import java.util.Set;
  * Created by lifang on 2015/1/19.
  */
 @Entity
-@Table(name = "t_admin")
+@Table(name = "t_hr_admin")
 public class AdminEntity extends BaseEntity{
 
     /**
@@ -98,12 +98,36 @@ public class AdminEntity extends BaseEntity{
     private Integer failedCount = 0;
 
     /**
+     * 密码加密使用到的盐
+     */
+    private String salt;
+
+    /**
      * 管理员拥有的角色
      */
     @NotEmpty
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "t_admin_role")
     private Set<RoleEntity> roles = new HashSet<RoleEntity>();
+
+
+    @Transient
+    public Set<String> getStrRoles(){
+        Set<String> strRoles = new HashSet<String>();
+        for(RoleEntity roleEntity : this.getRoles()){
+            strRoles.add(roleEntity.getId() + "");
+        }
+        return strRoles;
+    }
+
+    @Transient
+    public Set<String> getStrPermission(){
+        Set<String> strPermissions = new HashSet<String>();
+        for(RoleEntity roleEntity : this.getRoles()){
+            strPermissions.addAll(roleEntity.getAuthorities());
+        }
+        return strPermissions;
+    }
 
     public String getUsername() {
         return username;
@@ -119,7 +143,7 @@ public class AdminEntity extends BaseEntity{
 
     public void setPassword(char[] password) {
         if(password.length != 64){
-            this.password = CipherUtils.getTime64MD5(password);
+            this.password = CipherUtils.getTime64MD5(new String(password)).toCharArray();
         }else {
             this.password = password;
         }
@@ -219,5 +243,13 @@ public class AdminEntity extends BaseEntity{
 
     public void setRoles(Set<RoleEntity> roles) {
         this.roles = roles;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
     }
 }

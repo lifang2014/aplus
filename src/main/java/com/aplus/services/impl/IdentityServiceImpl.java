@@ -42,7 +42,10 @@ public class IdentityServiceImpl extends BaseServiceImpl<IdentityEntity, Long> i
             Long suffix = identityEntity.getSuffix() + identityEntity.getStep();
             identityEntity.setSuffix(suffix);
             return new StringBuffer(prefix).append(suffix).toString();
+        }else{
+            identityEntity = new IdentityEntity("AA", 1000L, 1, clazz.getName());
+            persist(identityEntity);
+            return new StringBuffer(identityEntity.getPrefix()).append(identityEntity.getSuffix()).toString();
         }
-        return null;
     }
 }

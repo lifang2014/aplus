@@ -2,6 +2,7 @@ package com.aplus.services.impl;
 
 import com.aplus.dao.BaseDao;
 import com.aplus.exception.ServiceException;
+import com.aplus.services.BaseService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,7 +14,7 @@ import java.util.List;
 /**
  * Created by lifang on 2015/1/22.
  */
-public class BaseServiceImpl<T, ID extends Serializable> implements BaseDao<T, ID> {
+public class BaseServiceImpl<T, ID extends Serializable> implements BaseService<T, ID> {
 
     public Logger logger = LoggerFactory.getLogger(BaseServiceImpl.class);
 
@@ -82,5 +83,10 @@ public class BaseServiceImpl<T, ID extends Serializable> implements BaseDao<T, I
                 baseDao.remove(t);
             }
         }
+    }
+
+    @Override
+    public List<T> findAllByName(String name) {
+        return findAllByName(name);
     }
 }

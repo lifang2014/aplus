@@ -2,10 +2,6 @@ package com.aplus.params;
 
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class Setting implements Serializable {
 	
@@ -32,6 +28,10 @@ public class Setting implements Serializable {
 	private XMLConfig initSecurity;//初始化密码
 
 	private XMLConfig employeeType;//员工状态
+
+	private XMLConfig role;//角色
+
+	private XMLConfig permissionSource;
 
 	public XMLConfig getAdmin() {
 		return admin;
@@ -95,6 +95,22 @@ public class Setting implements Serializable {
 
 	public void setEmployeeType(XMLConfig employeeType) {
 		this.employeeType = employeeType;
+	}
+
+	public XMLConfig getRole() {
+		return role;
+	}
+
+	public void setRole(XMLConfig role) {
+		this.role = role;
+	}
+
+	public XMLConfig getPermissionSource() {
+		return permissionSource;
+	}
+
+	public void setPermissionSource(XMLConfig permissionSource) {
+		this.permissionSource = permissionSource;
 	}
 
 	/*private static final long serialVersionUID = -1478999889661796840L;

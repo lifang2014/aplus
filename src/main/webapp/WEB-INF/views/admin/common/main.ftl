@@ -1,3 +1,4 @@
+[#assign shiro=JspTaglibs["/WEB-INF/tld/shiro.tld"] /]
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,7 +65,9 @@
                 </li>
             </ul>
         </div>
-        <div class="top-nav">上午好，欢迎您，邱秋！&nbsp;&nbsp;<a href="#">修改密码</a> | <a href="#">安全退出</a></div>
+        <div class="top-nav">
+            <span>上午好，欢迎您，邱秋！&nbsp;&nbsp;</span>
+            <a href="#">修改密码</a> | <a href="../logout.jsp">安全退出</a></div>
     </div>
     <!--头部结束-->
     <!--左边菜单开始-->
@@ -75,16 +78,18 @@
 
         <div class="acc">
 
-            <#list menus as menu>
-                <div>
-                    <a class="one">${menu.name}</a>
-                    <#list menu.subMenus as sm>
-                        <ul class="kid">
-                            <li><b class="tip"></b><a target="Conframe" href="${path }${sm.path }">${sm.name }</a></li>
-                        </ul>
-                    </#list>
-                </div>
-            </#list>
+            [#list menus as menu]
+                [@shiro.hasRole name="38"]
+                    <div>
+                        <a class="one">${menu.name}</a>
+                        [#list menu.subMenus as sm]
+                            <ul class="kid">
+                                <li><b class="tip"></b><a target="Conframe" href="${path }${sm.path }">${sm.name }</a></li>
+                            </ul>
+                        [/#list]
+                    </div>
+                [/@shiro.hasRole]
+            [/#list]
 
             <div id="datepicker"></div>
         </div>
