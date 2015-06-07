@@ -20,9 +20,9 @@ public class BaseTest extends AbstractJUnit4SpringContextTests{
     @After
     public void after(){
         Long endTime = System.currentTimeMillis();
-        logger.info("==============================");
-        logger.info(":::::::::::run time = {}ms", (endTime - startTime));
-        logger.info("==============================");
+        logger.info("=========================================================");
+        logger.info(":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::run time = {}ms", (endTime - startTime));
+        logger.info("=========================================================");
     }
 
     @Before

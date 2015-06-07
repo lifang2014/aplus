@@ -1,0 +1,94 @@
+
+/* ----------------------------
+		TABS CSS
+------------------------------ */
+
+.container_12 ul.tabs_12 {
+	margin: 0;
+	padding: 0;
+	float: right;
+	list-style: none;
+	height: 32px;
+	width: 100%;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-bottom-color: #ccc;
+	border-left-color: #ccc;
+}
+.container_12 ul.tabs_12 li {
+	float: left;
+	margin: 0;
+	padding: 0;
+	height: 31px; /*--Subtract 1px from the height of the unordered list--*/
+	line-height: 31px;
+	margin-bottom: -1px; /*--Pull the list item down 1px--*/
+	overflow: hidden;
+	position: relative;
+	background: #e0e0e0;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: none;
+	border-top-color: #ccc;
+	border-right-color: #ccc;
+	border-bottom-color: #ccc;
+	border-left-color: #ccc;
+}
+.container_12 ul.tabs_12 li a {
+	text-decoration: none;
+	color: #000;
+	display: block;
+	font-size: 1.2em;
+	padding: 0 20px;
+	border: 1px solid #fff; /*--Gives the bevel look with a 1px white border inside the list item--*/
+	outline: none;
+}
+.container_12 ul.tabs_12 li a:hover {
+	background: #ccc;
+}
+.container_12 ul.tabs_12 li.active, html ul.tabs_12 li.active a:hover  { /*--Makes sure that the active tab does not listen to the hover properties--*/
+	background: #fff;
+	border-bottom: 1px solid #fff; /*--Makes the active tab look like it's connected with its content--*/
+}
+
+
+.container_12 {
+	overflow: hidden;
+	float: right;
+	width: 80%;
+	background: #fff;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: none;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #ccc;
+	border-right-color: #ccc;
+	border-bottom-color: #ccc;
+	border-left-color: #ccc;
+	margin-top: -5px;
+	border-right: none;
+}
+.container_12 .tab_content_12 {
+	font-size: 1.2em;
+	height: 355px;
+	max-height: 355px;
+	clear: both;
+	overflow-y: scroll;
+}
+
+
+
+/* ----------------------------
+		end tabs
+------------------------------ */
+

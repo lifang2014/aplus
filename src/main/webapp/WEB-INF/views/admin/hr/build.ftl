@@ -4,20 +4,20 @@
 	<title></title>
 	
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link rel="stylesheet" type="text/css" href="${base}/resources/back/css/layout.css"/>
-    <link rel="stylesheet" type="text/css" href="${base}/resources/back/css/jquery-ui-1.10.4.min.css"/>
-    <link rel="stylesheet" type="text/css" href="${base}/resources/back/css/custom/hr-all.css"/>
-	<link rel="stylesheet" type="text/css" href="${base}/resources/common/tab/css/tab_styles.css"/>
+	<link rel="stylesheet" type="text/css" href="${path}/resources/css/hr/layout.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/resources/css/common/jquery-ui-1.10.4.min.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/resources/css/hr/hr-all.css"/>
+	<link rel="stylesheet" type="text/css" href="${path}/resources/js/tab/css/tab_styles.css"/>
 
-	<script type="text/javascript" src="${base}/resources/back/js/jquery-1.11.0.js"></script>
-	<script type="text/javascript" src="${base}/resources/back/js/hideshow.js"></script>
-	<script type="text/javascript" src="${base}/resources/back/js/jquery.tablesorter.min.js"></script>
-	<script type="text/javascript" src="${base}/resources/back/js/jquery.equalHeight.js"></script>
-    <script type="text/javascript" src="${base}/resources/back/js/jquery-ui-1.10.4.min.js"></script>
-    <script type="text/javascript" src="${base}/resources/back/js/jquery.ui.datepicker-zh-CN.js"></script>
-    <script type="text/javascript" src="${base}/resources/common/layer/layer.js"></script>
-	<script type="text/javascript" src="${base}/resources/common/tab/js/tab_scripts.js"></script>
-    <script type="text/javascript" src="${base}/resources/back/js/custom/hr-all.js"></script>
+	<script type="text/javascript" src="${path}/resources/js/common/jquery-1.11.0.js"></script>
+	<script type="text/javascript" src="${path}/resources/js/hr/hideshow.js"></script>
+	<script type="text/javascript" src="${path}/resources/js/hr/jquery.tablesorter.min.js"></script>
+	<script type="text/javascript" src="${path}/resources/js/hr/jquery.equalHeight.js"></script>
+    <script type="text/javascript" src="${path}/resources/js/common/jquery-ui-1.10.4.min.js"></script>
+    <script type="text/javascript" src="${path}/resources/js/hr/jquery.ui.datepicker-zh-CN.js"></script>
+    <script type="text/javascript" src="${path}/resources/js/layer/layer.js"></script>
+	<script type="text/javascript" src="${path}/resources/js/tab/js/tab_scripts.js"></script>
+    <script type="text/javascript" src="${path}/resources/js/hr/hr-all.js"></script>
 
 	<script type="text/javascript">
 		$(document).ready(function(e) {
@@ -75,7 +75,7 @@
                                     <tbody id="vote_list">
                                     <tr>
                                         <td class="td_face" rowspan="5">
-                                            <img src="${base}/resources/common/images/default_face_110_135.gif" alt="username"/>
+                                            <img src="${path}/resources/images/default_face_110_135.gif" alt="username"/>
                                         </td>
                                     </tr>
                                     <tr>
@@ -136,9 +136,9 @@
                                             ${msg("common.field.emp.status")}
                                         </td>
                                         <td style="padding-right: 20px;">
-                                            <img class="td_icon" src="${base}/resources/common/images/icon/icon_cancel.png" id="hr_cancel_icon">
-                                            <img class="td_icon" src="${base}/resources/common/images/icon/ico_edit.png" id="hr_edit_icon">
-                                            <img class="td_icon" src="${base}/resources/common/images/icon/icon_save.png" id="hr_save_icon">
+                                            <img class="td_icon" src="${path}/resources/images/icon/icon_cancel.png" id="hr_cancel_icon">
+                                            <img class="td_icon" src="${path}/resources/images/icon/ico_edit.png" id="hr_edit_icon">
+                                            <img class="td_icon" src="${path}/resources/images/icon/icon_save.png" id="hr_save_icon">
                                         </td>
                                     </tr>
                                     <tr>

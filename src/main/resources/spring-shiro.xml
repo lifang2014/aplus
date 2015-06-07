@@ -27,18 +27,18 @@
     </bean>
 
     <!-- 基于表单提交过滤器 -->
-    <bean id="authenticationFilter" class="com.aplus.filter.AuthenticationFilter"></bean>
+    <bean id="authenticationFilter" class="com.aplus.auth.AuthenticationFilter"></bean>
 
     <!-- 自定义Realm,权限验证 -->
-    <bean id="authenticationRealm" class="com.aplus.filter.AuthenticationRealm"/>
+    <bean id="authenticationRealm" class="com.aplus.auth.AuthenticationRealm"/>
 
 
 
-    <bean id="passwordRetryCache" class="com.aplus.filter.RetryLimitHashedCredentialsMatcher">
-        <constructor-arg ref="cacheManager"/>
-        <property name="hashAlgorithmName" value="md5"/>
-        <property name="hashIterations" value="2"/>
-        <property name="storedCredentialsHexEncoded" value="true"/>
-    </bean>
+    <!--<bean id="passwordRetryCache" class="com.aplus.filter.RetryLimitHashedCredentialsMatcher">-->
+        <!--<constructor-arg ref="cacheManager"/>-->
+        <!--<property name="hashAlgorithmName" value="md5"/>-->
+        <!--<property name="hashIterations" value="2"/>-->
+        <!--<property name="storedCredentialsHexEncoded" value="true"/>-->
+    <!--</bean>-->
 
 </beans>

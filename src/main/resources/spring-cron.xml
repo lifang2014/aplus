@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/task
+       http://www.springframework.org/schema/task/spring-task.xsd">
+
+
+    <!-- 定时调度线程池 -->
+    <bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <!-- 线程池维护线程的最少数量 -->
+        <property name="corePoolSize" value="${task.core_pool_size}"/>
+        <!-- 线程池维护线程的最大数量 -->
+        <property name="maxPoolSize" value="${task.max_pool_size}"/>
+        <!-- 任务队列的最大容量 -->
+        <property name="queueCapacity" value="${task.queue_capacity}"/>
+        <!-- 线程池维护线程所允许的空闲时间 -->
+        <property name="keepAliveSeconds" value="${task.keep_alive_seconds}"/>
+    </bean>
+
+    <task:annotation-driven/>
+
+</beans>

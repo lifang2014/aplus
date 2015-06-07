@@ -3,7 +3,7 @@
 <config>
 
     <!--是否开启初始化-->
-    <setting name="boolInit" enabled="true"/>
+    <setting name="boolInit" enabled="false"/>
 
     <!-- XML文件中分割符 -->
     <setting name="split" enabled="true" value=","></setting>

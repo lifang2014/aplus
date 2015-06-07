@@ -1,4 +1,4 @@
-package com.aplus.filter;
+package com.aplus.auth;
 
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;

@@ -1,4 +1,4 @@
-package com.aplus.filter;
+package com.aplus.auth;
 
 import com.aplus.entity.AdminEntity;
 import com.aplus.entity.LoginLogEntity;
@@ -54,6 +54,10 @@ public class AuthenticationRealm extends AuthorizingRealm {
         AdminEntity adminEntity = adminService.findById(principal.getId());
         simpleAuthenticationInfo.setRoles(adminEntity.getStrRoles());
         simpleAuthenticationInfo.setStringPermissions(adminEntity.getStrPermission());
+
+        WildcardPermissionEx wildcardPermissionEx = new WildcardPermissionEx();
+
+        simpleAuthenticationInfo.addObjectPermission(wildcardPermissionEx);
         return simpleAuthenticationInfo;
     }
 
@@ -96,6 +100,7 @@ public class AuthenticationRealm extends AuthorizingRealm {
                 adminService.merge(adminEntity);
                 loginLogService.persist(new LoginLogEntity(adminEntity, host, new Date(), LoginModeEnum.USERNAME));
                 logger.info("登录成功");
+
                 return new SimpleAuthenticationInfo(
                         new Principal(adminEntity.getId(), adminEntity.getUsername()),
                         password,

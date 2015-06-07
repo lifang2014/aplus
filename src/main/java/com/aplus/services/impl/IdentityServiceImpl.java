@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Random;
+
 /**
  * Created by lifang on 2015/2/1.
  */
@@ -43,7 +45,12 @@ public class IdentityServiceImpl extends BaseServiceImpl<IdentityEntity, Long> i
             identityEntity.setSuffix(suffix);
             return new StringBuffer(prefix).append(suffix).toString();
         }else{
-            identityEntity = new IdentityEntity("AA", 1000L, 1, clazz.getName());
+            Random random = new Random();
+            int step = 0;
+            do {
+                step = random.nextInt(10);
+            }while (step <= 0);
+            identityEntity = new IdentityEntity(clazz.getName().substring(0, 2).toUpperCase(), 10000L, step, clazz.getName());
             persist(identityEntity);
             return new StringBuffer(identityEntity.getPrefix()).append(identityEntity.getSuffix()).toString();
         }

@@ -1,0 +1,44 @@
+
+body{font-size:11px;font-family:"Microsoft YaHei";}
+
+
+#tb_hr{margin-top: 0px;}
+#tb_hr .td_title{width: 90px;padding-left: 0px;}
+#tb_hr .td_face{width: 135px;margin-left: 5px;padding-left: 0px;}
+#tb_hr .td_face img{margin-left: 8px;}
+#tb_hr .td_content{padding: 10px 0px 8px 0px;width: 200px;}
+#tb_hr .td_row_title{margin-left: 20px;padding-left: 40px;}
+
+.container_11 {
+    border: 1px solid #ccc;
+    float: left;
+    max-height: 380px;
+    margin-top: -5px;
+    width: 19.5%;
+    border-left: none;
+    overflow-y: auto;
+}
+.container_11 .con_nav{
+    height: 32px;
+    width: 100%;
+    font-size: 1.2em;
+    text-decoration: none;
+    border-bottom: 1px solid #ccc;
+    line-height: 31px;
+    text-indent: 1em;
+}
+
+.td_icon{float:right;cursor: pointer;margin-right: 10px;}
+.td_select{
+    border: none;
+    background-image: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    width: 100px;
+    overflow: hidden;}
+.input_edit_emp_status{
+    font-family: "Microsoft YaHei";
+    height: 20px;
+    border: none;
+}
+#hr_select_emp_type{display: none}

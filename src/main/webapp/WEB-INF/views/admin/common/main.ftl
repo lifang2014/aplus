@@ -1,4 +1,4 @@
-[#assign shiro=JspTaglibs["/WEB-INF/tld/shiro.tld"] /]
+[#assign shiro=JspTaglibs["/WEB-INF/tld/shiro.tld"]/]
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,12 +66,15 @@
             </ul>
         </div>
         <div class="top-nav">
+            [@shiro.hasPermission name="system:menu:view"]
             <span>上午好，欢迎您，邱秋！&nbsp;&nbsp;</span>
             <a href="#">修改密码</a> | <a href="../logout.jsp">安全退出</a></div>
+            [/@shiro.hasPermission]
     </div>
     <!--头部结束-->
     <!--左边菜单开始-->
     <div class="left_c left">
+
 
         <h1>${msg("main.menu.list")}</h1>
 

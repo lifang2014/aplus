@@ -1,0 +1,53 @@
+*{margin:0;padding:0;}
+body{font-size:14px;font-family:"Microsoft YaHei";}
+
+
+.tab_select ul,li{list-style:none;}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+.clearfix{display:inline-table}
+*html .clearfix{height:1%}
+.clearfix{display:block}
+*+html .clearfix{min-height:1%}
+
+.tab_select{position:relative;width:404px;margin:40px auto 0 auto;}
+.tab_select .tabList ul li{
+	float:left;
+	background:#fefefe;
+	background:-moz-linear-gradient(top, #fefefe, #ededed);	
+	background:-o-linear-gradient(left top,left bottom, from(#fefefe), to(#ededed));
+	background:-webkit-gradient(linear,left top,left bottom, from(#fefefe), to(#ededed));
+	border:1px solid #9ba0af;
+	border-top: none;
+	padding:5px 0;
+	width:100px;
+	text-align:center;
+	margin-left:-1px;
+	position:relative;
+	cursor:pointer;
+}
+.tab_select .tabCon{
+	position:absolute;
+	left:-1px;
+	top:32px;
+	border:1px solid #ccc;
+	border-top:none;
+	width:403px;
+	height:360px;
+	margin-top:-3px;
+	border: 1px solid #9ba0af;
+	border-top:none;
+}
+.tab_select .tabCon div{
+	padding:10px;
+	position:absolute;
+	opacity:0;
+	filter:alpha(opacity=0);
+}
+.tab_select .tabList li.cur{
+	border-bottom:none;
+	background:#fff;
+}
+.tab_select .tabCon div.cur{
+	opacity:1;
+	filter:alpha(opacity=100);
+}
