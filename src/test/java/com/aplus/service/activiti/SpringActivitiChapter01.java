@@ -7,10 +7,7 @@ import junit.framework.Assert;
 import net.sf.cglib.core.CollectionUtils;
 import net.sf.cglib.core.Predicate;
 import net.sf.cglib.core.Transformer;
-import org.activiti.engine.FormService;
-import org.activiti.engine.IdentityService;
-import org.activiti.engine.RepositoryService;
-import org.activiti.engine.TaskService;
+import org.activiti.engine.*;
 import org.activiti.engine.repository.ProcessDefinition;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
@@ -88,7 +85,7 @@ public class SpringActivitiChapter01 extends BaseTest{
         for(Task task : hrTask){
             logger.info("task name : {}", task.getName());
             variables = new HashMap<String, String>();
-            variables.put("hrPass", (Math.random() > 0.5) + "");
+            variables.put("hrPass", "true");
             formService.submitTaskFormData(task.getId(), variables);
         }
 
@@ -99,6 +96,9 @@ public class SpringActivitiChapter01 extends BaseTest{
             logger.info("task name : {}", task.getName());
             logger.info("task id : {}", task.getId());
             logger.info("task key : {}", task.getProcessDefinitionId());
+            variables = new HashMap<String, String>();
+            variables.put("reportBackDate", new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
+            formService.submitTaskFormData(task.getId(), variables);
         }
 
     }
@@ -136,13 +136,21 @@ public class SpringActivitiChapter01 extends BaseTest{
         }
     }
 
+    @Autowired
+    private ProcessEngineConfiguration processEngineConfiguration;
 
     @Test
-    public void testTime(){
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(calendar.get(Calendar.YEAR), 0, 31);
-        System.out.println(new SimpleDateFormat("yyyy-MM-dd").format(calendar.getTime()));
+    public void destory(){
+        ProcessEngine processEngine = processEngineConfiguration.buildProcessEngine();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        processEngine.close();
     }
+
+
 
 
 

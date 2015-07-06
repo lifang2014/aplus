@@ -1,11 +1,14 @@
 package com.aplus.entity;
 
+import com.aplus.iterceptor.AuditLogInterceptor;
+import com.aplus.logs.IAuditLog;
 import com.aplus.utils.CipherUtils;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -19,7 +22,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "t_hr_admin")
-public class AdminEntity extends BaseEntity{
+public class AdminEntity extends BaseEntity implements IAuditLog{
 
     /**
      * 用户名
@@ -251,5 +254,36 @@ public class AdminEntity extends BaseEntity{
 
     public void setSalt(String salt) {
         this.salt = salt;
+    }
+
+    @Override
+    public long getLogId() {
+        return this.getId();
+    }
+
+    @Override
+    public String getLogDetail() {
+        return this.toString();
+    }
+
+    @Override
+    public String toString() {
+        return "AdminEntity{" +
+                "username='" + username + '\'' +
+                ", qq='" + qq + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", password=" + Arrays.toString(password) +
+                ", isEnabledQQ=" + isEnabledQQ +
+                ", isEnabledPhone=" + isEnabledPhone +
+                ", isEnabledEmail=" + isEnabledEmail +
+                ", isLocked=" + isLocked +
+                ", loginDate=" + loginDate +
+                ", lockedDate=" + lockedDate +
+                ", loginCount=" + loginCount +
+                ", failedCount=" + failedCount +
+                ", salt='" + salt + '\'' +
+                ", roles=" + roles +
+                '}';
     }
 }

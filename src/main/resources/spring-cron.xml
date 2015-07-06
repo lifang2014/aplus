@@ -7,7 +7,6 @@
        http://www.springframework.org/schema/task
        http://www.springframework.org/schema/task/spring-task.xsd">
 
-
     <!-- 定时调度线程池 -->
     <bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
         <!-- 线程池维护线程的最少数量 -->
